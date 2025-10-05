@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: API Proyecto de Análisis
+  version: 1.0.0
+  description: Documentación de la API con Swagger
+servers:
+  - url: http://localhost:3000
+
+tags:
+  - name: Estudiantes
+    description: Endpoints para gestión de estudiantes
+  - name: Roles
+    description: Endpoints para gestión de roles
+
+paths:
+  /api/estudiantes:
+    get:
+      summary: Obtener todos los estudiantes
+      tags: [Estudiantes]
+      responses:
+        "200":
+          description: Lista de estudiantes
+    post:
+      summary: Crear estudiante
+      tags: [Estudiantes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: Juan Pérez
+                edad:
+                  type: integer
+                  example: 20
+                carrera:
+                  type: string
+                  example: Ingeniería en Sistemas
+      responses:
+        "201":
+          description: Estudiante creado
+
+  /api/estudiantes/{id}:
+    get:
+      summary: Obtener estudiante por ID
+      tags: [Estudiantes]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Estudiante encontrado
+        "404":
+          description: No encontrado
+    put:
+      summary: Actualizar estudiante
+      tags: [Estudiantes]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Estudiante actualizado
+    delete:
+      summary: Eliminar estudiante
+      tags: [Estudiantes]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Estudiante eliminado
+
+  /api/Roles:
+    get:
+      summary: Obtener todos los roles
+      tags: [Roles]
+      responses:
+        "200":
+          description: Lista de roles
+    post:
+      summary: Crear un nuevo rol
+      tags: [Roles]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: Administrador
+      responses:
+        "201":
+          description: Rol creado
