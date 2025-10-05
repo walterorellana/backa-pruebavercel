@@ -11,6 +11,4 @@ app.use(bodyParser.json());
 
 app.use("/evaluaciones", evaluacionesRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+export default app;
